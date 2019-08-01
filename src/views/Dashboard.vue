@@ -5,7 +5,7 @@
       <div class="dashboard-container">
         <h3>Welcome {{ userData.name }}!</h3>
         <p>Your signup email is {{ userData.email }}</p>
-        <h4>This is data from local storate: </h4>
+        <h4>This is data from local storage: </h4>
         <p v-for="localvalue in localvalues" :key="localvalue.id">{{ localvalue }}</p>
         <el-button class="button" type="primary" @click="clearData">CLEAR DATA</el-button>
       </div>
