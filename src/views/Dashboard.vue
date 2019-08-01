@@ -30,8 +30,8 @@ export default {
   },
   computed: mapGetters(["getFormName", "getFormEmail"]),
   created() {
-    this.userData.name = this.getFormName
-    this.userData.email = this.getFormEmail
+    this.userData.name = this.getFormName;
+    this.userData.email = this.getFormEmail;
   },
   mounted() { 
     // Load values from localStorage
