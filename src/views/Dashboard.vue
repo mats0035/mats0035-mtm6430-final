@@ -16,8 +16,6 @@
 <script>
 import { mapGetters } from "vuex";
 
-const localItem = ['name', 'email', 'password']
-
 export default {
   data() {
     return {
@@ -25,7 +23,8 @@ export default {
         name: "",
         email: ""
       },
-      localvalues: []
+      localvalues: [],
+      localItem: ['name', 'email', 'password']
     }
   },
   computed: mapGetters(["getFormName", "getFormEmail"]),
@@ -35,18 +34,22 @@ export default {
   },
   mounted() { 
     // Load values from localStorage
-    for (let i = 0; i < localItem.length; i++) {
-      if (localStorage.getItem(localItem[i])) {
-        this.localvalues.push(localStorage.getItem(localItem[i]))
+    for (let i = 0; i < this.localItem.length; i++) {
+      if (localStorage.getItem(this.localItem[i])) {
+        this.localvalues.push(localStorage.getItem(this.localItem[i]))
       }   
     }
   },
   methods: {
-    // Delete data of localStorage
     clearData() {
-      for (let i = 0; i < localItem.length; i++) {
-        localStorage.removeItem(localItem[i]);
+      // Delete data
+      this.userData = "";
+
+      // Delete data of localStorage
+      for (let i = 0; i < this.localItem.length; i++) {
+        localStorage.removeItem(this.localItem[i]);
       };
+      this.localvalues = []
     }
   }
 }
