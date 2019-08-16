@@ -56,7 +56,6 @@ export default new Vuex.Store({
 
           dispatch("storeUser", authData);
 
-          router.push({ name: "dashboard" });
         })
         .catch(error => {
           if (error.response) {
@@ -142,7 +141,10 @@ export default new Vuex.Store({
       .post("https://mats0035-mtm6430-final.firebaseio.com/users.json" + "?auth=" + state.idToken,
         userData
       )
-      .then(res => console.log(res))
+      .then(res => {
+        router.push({ name: "dashboard" });
+        console.log(res)
+      })
       .catch(error => console.log(error.message));
     },
     fetchUser({ commit, state }, userEmail) {
